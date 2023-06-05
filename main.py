@@ -44,7 +44,7 @@ def checkin(email=os.environ.get('EMAIL'), password=os.environ.get('PASSWORD'),
 result = checkin()
 
 # post message by feishu robot
-url = 'https://open.feishu.cn/open-apis/bot/v2/hook/7fe750a8-a325-4839-bae7-432f985c04e5'
+url = os.environ.get('FEISHU_WEBHOOK')
 headers = {'Content-Type': 'application/json'}
 data = {
   "msg_type": "text",
