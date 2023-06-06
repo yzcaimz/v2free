@@ -6,7 +6,6 @@ requests.packages.urllib3.disable_warnings()
 SCKEY = os.environ.get('SCKEY')
 TG_BOT_TOKEN = os.environ.get('TGBOT')
 TG_USER_ID = os.environ.get('TGUSERID')
-URL = os.environ.get('FEISHU_WEBHOOK')
 
 def checkin(email=os.environ.get('EMAIL'), password=os.environ.get('PASSWORD'),
             base_url=os.environ.get('BASE_URL'), ):
@@ -44,7 +43,7 @@ def checkin(email=os.environ.get('EMAIL'), password=os.environ.get('PASSWORD'),
 result = checkin()
 
 # post message by feishu robot
-url = URL
+url = "https://open.feishu.cn/open-apis/bot/v2/hook/7fe750a8-a325-4839-bae7-432f985c04e5"
 headers = {'Content-Type': 'application/json'}
 data = {
   "msg_type": "text",
