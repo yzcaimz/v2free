@@ -53,6 +53,7 @@ data = {
   }
 }
 
+print(url, headers, data)
 response = requests.post(url, headers=headers, data=json.dumps(data))
 if response.status_code == 200:
     print("飞书机器人消息发送成功")
