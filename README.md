@@ -1,13 +1,10 @@
-# 机场自动签到1
-做这个项目主要是看到最近冒出来许多机场注册就能白嫖，签到就送流量。然后又顺便拿这个项目学习一下Github Actions。
-请注意，本项目不讨论跟fq有关的话题，仅仅是技术讨论，不要询问白嫖jc等内容！！！
+# v2free机场自动签到
+Fork vpnqd/v2free项目，学习并使用v2free机场自动签到
+删除了TGBOT自动通知，增加了飞书机器人通知
 ## 功能
 
 废话，肯定就是机场自动签到啊。
 ## 部署
-
-https://xcao.top/post-278.html 水了个博文，操作更详细
-
 1. Fork此仓库
 2. 到`Settings`→`Secrets`→`Actions` 添加以下参数：
 
@@ -16,14 +13,11 @@ https://xcao.top/post-278.html 水了个博文，操作更详细
 | EMAIL  | 是  | 注册机场所用邮箱  | a@example.com  |
 | PASSWORD  | 是  | 注册机场所用密码  | password1  |
 | BASE_URL  | 是  | 机场地址  | https://examplea.com  |
-| SCKEY  | 否  | Sever酱秘钥  | SCTxxxxxxxxxxxxxx  |
+| SCKEY  | 是  | Sever酱秘钥  | SCTxxxxxxxxxxxxxx  |
 | FS_BOT  | 否  | 飞书机器人webhook地址  | https://open.feishu.cn/open-apis/bot/v2/hook/xxxx  |
 
+> https://xcao.top/post-278.html 水了个博文，操作更详细
 
 3. 转到`Actions`创建一个workflow，运行一次，以后每天项目都会自动运行。最后，可以到Run sign查看签到情况，同时也会通过Sever酱发送出去。
-## 参考
-1. https://github.com/zhjc1124/ssr_autocheckin 用了他的机场签到代码。
-2. https://github.com/sirodeneko/genshin-sign 参考其Actions的yml。
-（两个仓库均无许可证，让我有点蒙）
-## 赞助我
-[![](https://raw.githubusercontent.com/xiaocao666tzh/imghosting/main/img/%E4%B8%87%E8%83%BD%E6%94%B6%E6%AC%BE%E7%A0%81-%E8%8D%89%E3%81%AE%E5%8D%9A%E5%AE%A2.png)](https://raw.githubusercontent.com/xiaocao666tzh/imghosting/main/img/%E4%B8%87%E8%83%BD%E6%94%B6%E6%AC%BE%E7%A0%81-%E8%8D%89%E3%81%AE%E5%8D%9A%E5%AE%A2.png)
+## Fork
+1. https://github.com/vpnqd/v2free
