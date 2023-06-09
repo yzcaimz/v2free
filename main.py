@@ -4,8 +4,7 @@ import os
 
 requests.packages.urllib3.disable_warnings()
 SCKEY = os.environ.get('SCKEY')
-TG_BOT_TOKEN = os.environ.get('TGBOT')
-TG_USER_ID = os.environ.get('TGUSERID')
+FS_BOT = os.environ.get('FS_BOT')
 
 def checkin(email=os.environ.get('EMAIL'), password=os.environ.get('PASSWORD'),
             base_url=os.environ.get('BASE_URL'), ):
@@ -43,26 +42,19 @@ def checkin(email=os.environ.get('EMAIL'), password=os.environ.get('PASSWORD'),
 result = checkin()
 
 # post message by feishu robot
-url = "https://open.feishu.cn/open-apis/bot/v2/hook/7fe750a8-a325-4839-bae7-432f985c04e5"
-headers = {'Content-Type': 'application/json'}
-data = {
-  "msg_type": "text",
-  "content": {
-    "text": result
+if FS_BOT != '':
+  url = FS_BOT
+  headers = {'Content-Type': 'application/json'}
+  data = {
+    "msg_type": "text",
+    "content": {
+      "text": result
+    }
   }
-}
 
-print(url, headers, data)
-response = requests.post(url, headers=headers, data=json.dumps(data))
-if response.status_code == 200:
+  print(url, headers, data)
+  response = requests.post(FS_BOT, headers=headers, data=json.dumps(data))
+  if response.status_code == 200:
     print("飞书机器人消息发送成功")
-else:
+  else:
     print("飞书机器人消息发送失败")
-
-
-if SCKEY != '':
-    sendurl = 'https://sctapi.ftqq.com/' + SCKEY + '.send?title=v2free机场签到&desp=' + result
-    r = requests.get(url=sendurl)
-if TG_USER_ID != '':
-    sendurl = f'https://api.telegram.org/bot{TG_BOT_TOKEN}/sendMessage?chat_id={TG_USER_ID}&text={result}&disable_web_page_preview=True'
-    r = requests.get(url=sendurl)
